@@ -1,0 +1,38 @@
+name: Pifect CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9"]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+      - name: Install black
+        run: |
+          pip install black
+      - name: Install isort
+        run: |
+          pip install isort
+      - name: Check inline with black
+        run: |
+          black containers --check --line-length=88
+      - name: Check inline with black
+        run: |
+          isort containers --profile black
+      - name: Test with pytest
+        run: |
+          pytest tests/unit
