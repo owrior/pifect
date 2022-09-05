@@ -10,5 +10,5 @@ def log_task(name):
 
 
 @flow()
-def log_flow(name: str):
+def log_flow(name: str = "Oscar"):
     log_task(name)
