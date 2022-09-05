@@ -21,12 +21,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-      - name: Install black
+      - name: Install bot reviewers
         run: |
-          pip install black
-      - name: Install isort
-        run: |
-          pip install isort
+          pip install black isort pytest
       - name: Check inline with black
         run: |
           black containers --check --line-length=88
