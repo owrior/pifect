@@ -31,13 +31,13 @@ infrastructure:
   _is_anonymous: true
   _block_type_slug: process
 storage:
-  repository: git@github.com:owrior/pifect.git
+  repository: https://github.com/owrior/pifect.git
   reference: null
   _block_document_id: c78a744e-818a-433a-bd55-d439bad7587b
   _block_document_name: pifect
   _is_anonymous: false
   _block_type_slug: github
-path: containers/test_flow/flow.py:log_flow
+path: pifect/containers/test_flow/flow.py:log_flow
 entrypoint: flow.py:log_flow
 parameter_openapi_schema:
   title: Parameters
