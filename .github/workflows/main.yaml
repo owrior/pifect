@@ -23,13 +23,16 @@ jobs:
           python -m pip install --upgrade pip
       - name: Install bot reviewers
         run: |
-          pip install black isort pytest
+          pip install black isort pytest flake8
       - name: Check inline with black
         run: |
-          black containers --check --line-length=88
-      - name: Check inline with black
+          black containers tests --check --line-length=88
+      - name: Check import orders
         run: |
-          isort containers --profile black
+          isort containers tests --profile black
+      - name: Check with flake8
+        run: |
+          flake8 containers tests
       - name: Test with pytest
         run: |
           pytest tests/unit
